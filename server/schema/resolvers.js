@@ -2,7 +2,6 @@ const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { sign } = require('core-js/fn/number');
-const { findOneAndUpdate } = require('../models/User');
 
 const resolvers = {
     Query: {
@@ -21,8 +20,8 @@ const resolvers = {
         }
     },
     Mutation: {
-        login: async (parent, { username, email, password }) => {
-            const user = await User.findOne({ $or: [{ email }, { username }] });
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
             if (!user) {
                 throw new AuthenticationError('Incorrect login information!');
