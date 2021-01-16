@@ -48,7 +48,7 @@ const resolvers = {
 
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { savedBooks: { ...args, username: context.user.username } } },
+                    { $addToSet: { savedBooks: { ...args } } },
                     { new: true, runValidators: true }
                 );
 
@@ -57,8 +57,17 @@ const resolvers = {
 
             throw new AuthenticationError('There was a request error...');
         },
-        removeBook: async (parent, args, context) => {
+        removeBook: async (parent, { bookId }, context) => {
+            if (context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { savedBooks: bookId } },
+                    { new: true }
+                );
 
+                return updatedUser;
+            }
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
 };
