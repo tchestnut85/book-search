@@ -1,22 +1,21 @@
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { sign } = require('core-js/fn/number');
 
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user._id })
-                    .select('-__v -password')
-                    .populate('savedBooks');
+                const userData = await User.findOne({ _id: context.user._id });
+                // .select('-__v -password')
+                // .populate('savedBooks');
             }
         },
         users: async () => {
             return await User.find().select('-__v -password').populate('savedBooks');
         },
         user: async (parent, { username }) => {
-            return await User.findOne({ username }).select('-__v -password').populate('savedBoooks');
+            return await User.findOne({ username }).select('-__v -password').populate('savedBooks');
         }
     },
     Mutation: {
@@ -42,12 +41,12 @@ const resolvers = {
 
             return { token, user };
         },
-        saveBook: async (parent, args, context) => {
+        saveBook: async (parent, { bookData }, context) => {
             if (context.user) {
 
-                const updatedUser = await User.findOneAndUpdate(
+                const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { savedBooks: { ...args } } },
+                    { $push: { savedBooks: { bookData } } },
                     { new: true, runValidators: true }
                 );
 
