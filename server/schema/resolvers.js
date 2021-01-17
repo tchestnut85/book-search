@@ -11,13 +11,16 @@ const resolvers = {
                 // .populate('savedBooks');
             }
         },
+
         users: async () => {
             return await User.find().select('-__v -password').populate('savedBooks');
         },
+
         user: async (parent, { username }) => {
             return await User.findOne({ username }).select('-__v -password').populate('savedBooks');
         }
     },
+
     Mutation: {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
@@ -35,18 +38,20 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
 
             return { token, user };
         },
+
         saveBook: async (parent, { bookData }, context) => {
             if (context.user) {
 
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { savedBooks: { bookData } } },
+                    { $push: { savedBooks: bookData } },
                     { new: true, runValidators: true }
                 );
 
@@ -55,6 +60,7 @@ const resolvers = {
 
             throw new AuthenticationError('There was a request error...');
         },
+
         removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
