@@ -2,8 +2,9 @@
 <a href="https://booksearch-tc.herokuapp.com/">![Deployed App](https://img.shields.io/badge/Deployed%20App-blue.svg)</a> 
 
 ## Description
-Book Search uses the Google Books API to let you search for any book title and find results for that book. The search results are displayed with the book's title, image and description. You can signup to create a username and save your favorite books to display in your saved books page. The saved books are persistent and will still show up when you log out and return to the app.
-This code 
+Book Search is a full-stack MERN app uses that uses the Google Books API to let you search for any book title and find results for that book. The search results are displayed with the book's title, image and description. You can signup to create a username and save your favorite books to display in your saved books page. The saved books are persistent and will still show up when you log out and return to the app.
+
+This app was refactored from an existing, fully functional MERN app setup with a RESTful API. I refactored the existing RESTful API to a GraphQL API using Apollo Server with GraphQL queries and mutations, along with MongoDB, Express, React and Node. Refactoring to a GraphQL API allows for less calls to the server and avoids overfetching of data. 
 
 #### Main Page:
 
@@ -20,15 +21,15 @@ This code
   - [License](#license)
   
   ## Technology Used
-  ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-  ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
-  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-  ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-  ![Mongoose.js](https://img.shields.io/badge/Mongoose.js-880000?style=for-the-badge&logoColor=white)
-  ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-  ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
-  ![GraphQL](https://img.shields.io/badge/GraphQL-E4405F?style=for-the-badge)
-  ![Apollo](https://img.shields.io/badge/Apollo_Server-8B89CC?style=for-the-badge)
+  ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
+  ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)  
+  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+  ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
+  ![GraphQL](https://img.shields.io/badge/GraphQL-E4405F?style=for-the-badge)  
+  ![Apollo](https://img.shields.io/badge/Apollo_Server-8B89CC?style=for-the-badge)  
+  ![Mongoose.js](https://img.shields.io/badge/Mongoose.js-880000?style=for-the-badge&logoColor=white)  
+  ![MongoDB Atlas](https://img.shields.io/badge/MongoDB%20Atlas-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
+  ![Heroku](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)  
 
   
   ## Contact
