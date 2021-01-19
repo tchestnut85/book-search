@@ -1,5 +1,5 @@
-# Book Search
-<a href="https://booksearch-tc.herokuapp.com/">![Deployed App](https://img.shields.io/badge/Deployed%20App-blue.svg)</a> 
+# Book Search App
+<a href="https://booksearch-tc.herokuapp.com/">![Deployed App](https://img.shields.io/badge/Deployed%20App-blue.svg)</a>    <a href=./LICENSE>![License](https://img.shields.io/badge/License%3A-MIT-green.svg)</a>   
 
 ## Description
 Book Search is a full-stack MERN app that uses the Google Books API to let you search for any book title and returns results for the title searched. The search results are displayed with the book's title, image and description. You can signup to create a username and save your favorite books to display in your saved books page. The saved books are persistent and will still show up when you log out and return to the app.
@@ -13,6 +13,10 @@ This app was refactored from an existing, fully functional MERN app setup with a
 #### Search Results:
 
 ![Search Results](/client/src/assets/images/screenshot-2.png)
+
+#### Saved Books:
+
+![Saved Books](/client/src/assets/images/screenshot-3.png)
 
   ## Table of Contents
   - [Tech Used](#tech-used)
