@@ -8,24 +8,19 @@ import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
 
-  const [removeBook] = useMutation(REMOVE_BOOK);
-
   const { loading, data } = useQuery(GET_ME);
-  console.log(data);
-
   const userData = data?.me || [];
-  console.log('userData.savedBooks:', userData.savedBooks);
-
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+  const [removeBook] = useMutation(REMOVE_BOOK);
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+    console.log(bookId);
     if (!token) {
       return false;
     }
 
     try {
+      // Apollo will cache the response and automatically refetch and update
       await removeBook({
         variables: { bookId: bookId }
       });
@@ -51,12 +46,12 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
+          {userData.savedBooks?.length
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {userData.savedBooks?.map((book) => {
             return (
               <Card key={book.bookId} border='dark'>
                 {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
